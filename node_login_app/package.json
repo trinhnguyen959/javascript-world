@@ -1,0 +1,33 @@
+{
+	"name": "node_login_app",
+	"version": "1.0.0",
+	"description": "login app of node js with session and cookies",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon --inspect server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/trinhnguyen959/node_login_app.git"
+	},
+	"keywords": [
+		"nodejs",
+		"login",
+		"session",
+		"cookies"
+	],
+	"author": "trinhnv",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/trinhnguyen959/node_login_app/issues"
+	},
+	"homepage": "https://github.com/trinhnguyen959/node_login_app#readme",
+	"dependencies": {
+		"ejs": "^3.1.6",
+		"express": "^4.17.1",
+		"express-session": "^1.17.2",
+		"nodemon": "^2.0.14",
+		"uuid": "^8.3.2"
+	}
+}
