@@ -33,7 +33,7 @@ console.log('array after unshift:', languages);
 * params3: mang can them
 * */
 languages.splice(2, 0, 'Dart');
-console.log('array after unshift:', languages);
+console.log('array after splice:', languages);
 
 // 8: concat -> noi array
 let secondLanguages = ['Rails', 'Flutter', 'C#'];
