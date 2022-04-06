@@ -1,7 +1,3 @@
-### IntelliJ IDEA ###
-*/.idea
-**/out
-**/*.iws
-**/*.iml
-**/*.ipr
-node_modules
+/node_modules
+!/core-js
+.idea
