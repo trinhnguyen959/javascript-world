@@ -14,7 +14,7 @@ let preOutput = prefixNumber++;
 console.log('Prefix output:', preOutput);
 console.log('Prefix number:', prefixNumber);
 
-console.log('\n')
+console.log('\n');
 
 // sample 1
 let firstNumber = 6;
@@ -23,7 +23,7 @@ let firstOutput = firstNumber++ + --firstNumber;
 // 2: khi sang -- thi number da tang len 1 = 7, --7 = 6
 console.log('First Output:', firstOutput);
 
-console.log('\n')
+console.log('\n');
 
 // sample 2
 let secondNumber = 6;

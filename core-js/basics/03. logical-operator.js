@@ -3,14 +3,14 @@ console.log('number 1 == number 1:', 1 == 1);
 console.log('string 1 == number 1:', '1' == 1);
 console.log('string 1 != number 1:', '1' != 1);
 
-console.log('\n')
+console.log('\n');
 
 // === so sanh quan tam den gia tri va kieu du lieu
 console.log('number 1 === number 1:', 1 === 1);
 console.log('string 1 === number 1:', '1' === 1);
 console.log('string 1 !== number 1:', '1' !== 1);
 
-console.log('\n')
+console.log('\n');
 
 // toan tu && logic can chu y
 let first = 1;
@@ -23,13 +23,13 @@ console.log(result);
 * 1 trong A B C la Falsy thi tra luon ra gia tri do
 * */
 let wiredResult = 'A' && 'B' && 'C';
-let secondWiredResult = 'A' && NaN && 'C'
+let secondWiredResult = 'A' && NaN && 'C';
 console.log(wiredResult); // C
 
 if (secondWiredResult) {
 	console.log('True');
 } else {
-	console.log('False')
+	console.log('False');
 }
 
 console.log('\n');

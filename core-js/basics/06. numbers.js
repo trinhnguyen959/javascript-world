@@ -3,7 +3,7 @@ console.log('so khong hop le:', result);
 // van la so nhung khong hop le
 console.log('NaN is:', typeof result);
 // so sanh
-console.log('NaN is equal NaN', NaN == NaN); // false
+console.log('NaN is equal NaN', NaN === NaN); // false
 console.log(isNaN(result));
 
 console.log('\n');

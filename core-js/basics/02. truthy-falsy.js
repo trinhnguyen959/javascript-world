@@ -14,6 +14,6 @@ console.log('undefined is truthy: ', undefined == true);
 console.log('NaN is truthy: ', NaN == true);
 console.log('null is truthy: ', null == true);
 
-console.log('\n')
+console.log('\n');
 
 console.log('1 and all others is truthy: ', 1 == true);
