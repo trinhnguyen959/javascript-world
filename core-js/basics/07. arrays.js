@@ -119,20 +119,3 @@ console.log('totalCoin: ', totalCoin);
 let depthArray = [1, 2, [3, 4], 5, 6, [7, 8, 9]];
 let flattedArray = depthArray.reduce((flattedArray, item) => flattedArray.concat(item), []);
 console.log('flatted Array:', flattedArray);
-
-// logic reduce() => tai hien
-Array.prototype.reduce2 = function (callback, result) {
-	let i = 0;
-	if (arguments.length < 2) {
-		i = 1;
-		result = this[0];
-	}
-	for (; i < this.length; i++) {
-		result = callback(result, this[i], i, this);
-	}
-	return result;
-};
-
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-let totalNumbers = numbers.reduce2((total, number) => total + number, 0);
-console.log(totalNumbers);

@@ -89,7 +89,7 @@ console.log('\n');
 // 7: Math -> khong phai la object constructor
 console.log(Math.PI);
 // lam tron
-console.log(Math.round(1, 3));
+console.log(Math.round(1.3));
 
 // gia tri tuyet doi
 console.log(Math.abs(-2));
