@@ -1,5 +1,5 @@
 // 1: performance
-let languages = ['Javascript', 'PHP', 'Dart', 'Java', 'Ruby', 'Python',];
+let languages = ['Javascript', 'PHP', 'Dart', 'Java', 'Ruby', 'Python'];
 
 // bad performance
 // for (let i = 0; i < languages.length; i++) {
@@ -16,7 +16,7 @@ for (let i = 0; i < languagesLength; i++) {
 let myInfo = {
 	name: 'Trinh Nguyen',
 	age: 18,
-	address: 'Namek'
+	address: 'Namek',
 };
 
 for (const key in myInfo) {

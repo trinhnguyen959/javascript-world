@@ -103,16 +103,10 @@ console.log(Math.floor(4.2));
 // radom -> tra ve so thap phan nho hon 1
 console.log(Math.random());
 let random = Math.floor(Math.random() * 5);
-let bonus = [
-	'10 coin',
-	'20 coin',
-	'30 coin',
-	'40 coin',
-	'50 coin',
-];
+let bonus = ['10 coin', '20 coin', '30 coin', '40 coin', '50 coin'];
 
 console.log(bonus[random]);
 
 // min - max
-console.log(Math.min(1, 0, 38, 43, 7, 7, 9,));
-console.log(Math.max(1, 0, 38, 43, 7, 7, 9,));
+console.log(Math.min(1, 0, 38, 43, 7, 7, 9));
+console.log(Math.max(1, 0, 38, 43, 7, 7, 9));

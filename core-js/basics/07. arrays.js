@@ -28,10 +28,10 @@ console.log('array after unshift:', languages);
 
 // 7: splice: xoa cat chen 1 phan tu moi vao mang
 /*
-* params1: vi tri con tro
-* params2: range can xoa -> 0 la khong xoa
-* params3: mang can them
-* */
+ * params1: vi tri con tro
+ * params2: range can xoa -> 0 la khong xoa
+ * params3: mang can them
+ * */
 languages.splice(2, 0, 'Dart');
 console.log('array after splice:', languages);
 
@@ -50,32 +50,32 @@ let courses = [
 	{
 		id: 1,
 		name: 'Javascript',
-		coin: 250
+		coin: 250,
 	},
 	{
 		id: 2,
 		name: 'HTML, CSS',
-		coin: 0
+		coin: 0,
 	},
 	{
 		id: 3,
 		name: 'Ruby',
-		coin: 0
+		coin: 0,
 	},
 	{
 		id: 4,
 		name: 'PHP',
-		coin: 400
+		coin: 400,
 	},
 	{
 		id: 5,
 		name: 'ReactJS',
-		coin: 500
+		coin: 500,
 	},
 	{
 		id: 6,
 		name: 'Ruby',
-		coin: 100
+		coin: 100,
 	},
 ];
 
@@ -102,7 +102,7 @@ function courseHandler(course, index, originArray) {
 		id: course.id,
 		name: `Course: ${course.name}`,
 		coin: course.coin,
-		coinContext: `Price: ${course.coin}`
+		coinContext: `Price: ${course.coin}`,
 	};
 }
 
@@ -112,10 +112,16 @@ console.log(newCourses);
 console.log('\n');
 
 // reduce
-let totalCoin = courses.reduce((total, course, index, original) => total + course.coin, 0);
+let totalCoin = courses.reduce(
+	(total, course, index, original) => total + course.coin,
+	0
+);
 console.log('totalCoin: ', totalCoin);
 
 // flat array
 let depthArray = [1, 2, [3, 4], 5, 6, [7, 8, 9]];
-let flattedArray = depthArray.reduce((flattedArray, item) => flattedArray.concat(item), []);
+let flattedArray = depthArray.reduce(
+	(flattedArray, item) => flattedArray.concat(item),
+	[]
+);
 console.log('flatted Array:', flattedArray);

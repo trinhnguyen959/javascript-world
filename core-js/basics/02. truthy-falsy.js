@@ -1,11 +1,11 @@
 /* cac kieu du lieu false trong js:
-* 0
-* false
-* '' or ""
-* undefined
-* NaN
-* null
-* */
+ * 0
+ * false
+ * '' or ""
+ * undefined
+ * NaN
+ * null
+ * */
 
 console.log('0 is truthy: ', 0 ? true : false);
 console.log('false is truthy: ', false == true);

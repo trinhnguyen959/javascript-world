@@ -10,7 +10,7 @@ function showMessage() {
 showMessage();
 
 /* 3 loai function
-* 1: Decralation -> function binh thuong
-* 2: Expression -> gan cho 1 bien
-* 3: Arrow -> dung mui ten
-* */
+ * 1: Decralation -> function binh thuong
+ * 2: Expression -> gan cho 1 bien
+ * 3: Arrow -> dung mui ten
+ * */

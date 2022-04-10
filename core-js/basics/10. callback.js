@@ -1,9 +1,9 @@
 /*
-* call back
-* la ham co kha nang truyen qua doi so khi goi ham khacs
-* la ham
-* duoc truyen qua doi so
-* */
+ * call back
+ * la ham co kha nang truyen qua doi so khi goi ham khacs
+ * la ham
+ * duoc truyen qua doi so
+ * */
 
 function myFunction(param) {
 	console.log(typeof param);
@@ -82,32 +82,32 @@ let courseArr = [
 	{
 		id: 1,
 		name: 'Javascript',
-		coin: 250
+		coin: 250,
 	},
 	{
 		id: 2,
 		name: 'HTML, CSS',
-		coin: 0
+		coin: 0,
 	},
 	{
 		id: 3,
 		name: 'Ruby',
-		coin: 0
+		coin: 0,
 	},
 	{
 		id: 4,
 		name: 'PHP',
-		coin: 400
+		coin: 400,
 	},
 	{
 		id: 5,
 		name: 'ReactJS',
-		coin: 500
+		coin: 500,
 	},
 	{
 		id: 6,
 		name: 'Ruby',
-		coin: 100
+		coin: 100,
 	},
 ];
 
@@ -124,7 +124,9 @@ Array.prototype.filter2 = function (callback) {
 	return result;
 };
 
-let courseHasCoinGreaterThan100 = courseArr.filter2(course => course.coin > 100);
+let courseHasCoinGreaterThan100 = courseArr.filter2(
+	course => course.coin > 100
+);
 console.log(courseHasCoinGreaterThan100);
 
 console.log('\n==> some');
