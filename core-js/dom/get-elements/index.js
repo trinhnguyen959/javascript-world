@@ -39,4 +39,15 @@ console.log('2st way query form', { thirdForm });
 
 // anchors -> Deprecated
 let anchors = document.anchors;
-console.log(anchors);
+console.log('anchors', anchors);
+
+// select thong thuong
+let elementNode = document.querySelectorAll('.box-1 li');
+console.log('elementNode', elementNode);
+
+// cong viec 1: su dung boxNode
+let boxNode = document.querySelector('.box-1');
+console.log('boxNode', { boxNode });
+// cong viec 2: su dung li la con cua boxNode
+console.log('all li boxNode', boxNode.querySelectorAll('li'));
+console.log('get all p', boxNode.querySelector('p'));
