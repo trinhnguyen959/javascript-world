@@ -45,4 +45,25 @@ document.onkeydown = e => {
 			console.log('SEND CHAT');
 			break;
 	}
+};
+
+/*
+ * 1: preventDefault
+ * 2: stopPropagation
+ * */
+
+let allLinkElement = document.links;
+console.log(allLinkElement);
+for (const element of allLinkElement) {
+	element.onclick = e => {
+		if (!e.target.href.startsWith('https://www.udemy.com')) {
+			e.preventDefault();
+		}
+	};
 }
+
+document.querySelector('#dev').onclick = () => console.log('DEV');
+document.querySelector('#btn').onclick = e => {
+	e.stopPropagation();
+	console.log('Click me!');
+};
