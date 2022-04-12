@@ -13,3 +13,36 @@ let h1AllElement = document.querySelectorAll('h1');
 for (const element of h1AllElement) {
 	element.onclick = e => console.log(e.target);
 }
+
+/*
+ * 1: Input / select
+ * 2: Keyup / down
+ * */
+// input
+let inputElement = document.querySelector('input[type="text"]');
+console.log('input element:', inputElement);
+inputElement.onchange = e => console.log(e.target.value);
+
+//checkbox
+let checkBoxElement = document.querySelector('input[type="checkbox"]');
+checkBoxElement.onchange = e => console.log(e.target.checked);
+
+// selection
+let selectElement = document.querySelector('select');
+selectElement.onchange = e => console.log(e.target.value);
+
+let keyElement = document.querySelector('input[type="text"]');
+keyElement.onkeydown = e => console.log(e);
+
+// key down in document
+document.onkeydown = e => {
+	console.log(e);
+	switch (e.which) {
+		case 27:
+			console.log('EXIT');
+			break;
+		case 13:
+			console.log('SEND CHAT');
+			break;
+	}
+}
