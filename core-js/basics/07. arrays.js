@@ -30,7 +30,7 @@ console.log('array after unshift:', languages);
 /*
  * params1: vi tri con tro
  * params2: range can xoa -> 0 la khong xoa
- * params3: mang can them
+ * params3: value can them
  * */
 languages.splice(2, 0, 'Dart');
 console.log('array after splice:', languages);
