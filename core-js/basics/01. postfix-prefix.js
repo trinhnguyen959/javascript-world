@@ -27,7 +27,7 @@ console.log('\n');
 
 // sample 2
 let secondNumber = 6;
-let sencondOutput = ++secondNumber * 2 - secondNumber-- * 2;
+let secondOutput = ++secondNumber * 2 - secondNumber-- * 2;
 // 1: cong thang 1 cho second number = 7
 // 2: number da la 7 copy number van la 7 -> 7 * 2 - 7 * 2
-console.log('Sencond Output:', sencondOutput);
+console.log('Second Output:', secondOutput);
