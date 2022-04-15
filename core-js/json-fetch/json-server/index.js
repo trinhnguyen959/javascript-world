@@ -51,10 +51,10 @@ function handleDeleteCourse(courseId) {
 			'Content-Type': 'application/json',
 		},
 	};
-	fetch(coursesApi + '/' + courseId, options)
+	fetch(`${coursesApi}/${courseId}`, options)
 		.then(res => res.json())
 		.then(() => {
-			let courseDeleted = document.querySelector('.item-' + courseId);
+			let courseDeleted = document.querySelector(`.item-${courseId}`);
 			if (courseDeleted) {
 				courseDeleted.remove();
 			}
