@@ -49,7 +49,7 @@ console.log('\n');
 let lotOfSpace = '                this is a lot of space             ';
 console.log('length before:', lotOfSpace.length);
 let spaceAfter = lotOfSpace.trim();
-console.log('trim sapce:', spaceAfter);
+console.log('trim space:', spaceAfter);
 console.log('length after:', spaceAfter.length);
 
 console.log('\n');
