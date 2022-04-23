@@ -75,7 +75,7 @@ btnHold.addEventListener('click', () => {
 		$(`#score--${activePlayer}`).textContent = scores[activePlayer];
 
 		// check score if >= 100
-		if (scores[activePlayer] >= 20) {
+		if (scores[activePlayer] >= 100) {
 			isPlaying = false;
 			diceEl.classList.add('hidden');
 			$(`.player--${activePlayer}`).classList.add('player--winner');
