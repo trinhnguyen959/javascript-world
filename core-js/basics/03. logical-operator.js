@@ -41,3 +41,6 @@ console.log('\n');
 
 let secondResult = NaN || 'B' || undefined || 'D';
 console.log(secondResult);
+
+const el = 1;
+el && console.log('el is not null');
