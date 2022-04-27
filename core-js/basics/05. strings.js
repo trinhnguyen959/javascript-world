@@ -10,7 +10,7 @@ console.log('\n');
 // string method
 let myString = 'This is the string in my js space js and the space';
 // 1: length
-console.log('lenght:', myString.length);
+console.log('length:', myString.length);
 
 console.log('\n');
 
