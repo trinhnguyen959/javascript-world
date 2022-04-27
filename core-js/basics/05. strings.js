@@ -67,3 +67,8 @@ console.log('char at 10 is:', myString.charAt(10));
 console.log('string la array:', myString[10]);
 // khong tim thay -> tra ve rong
 console.log('khong ton tai index:', typeof myString.charAt(1000));
+
+// 9: padStart and padEnd
+const message = 'go to the pro';
+console.log(message.padStart(20, '.'));
+console.log('Trinh'.padEnd(20, '.'));
