@@ -61,9 +61,11 @@ const inputLoanAmount = $('.form__input--loan-amount');
 const inputCloseUsername = $('.form__input--user');
 const inputClosePin = $('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
 	containerMovements.innerHTML = '';
-	movements.forEach((move, i) => {
+
+	const moves = sort ? movements.slice().sort((a, b) => a - b) : movements;
+	moves.forEach((move, i) => {
 		const type = move > 0 ? 'deposit' : 'withdrawal';
 		const html = `
 			<div class="movements__row">
@@ -213,6 +215,13 @@ btnClose.addEventListener('click', function (e) {
 	}
 
 	inputCloseUsername.value = inputClosePin.value = '';
+});
+
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+	e.preventDefault();
+	displayMovements(currentAccount.movements, !sorted);
+	sorted = !sorted;
 });
 
 /////////////////////////////////////////////////
