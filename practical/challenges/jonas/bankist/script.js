@@ -84,23 +84,23 @@ const calcDisplayBalance = movements =>
 		0
 	)} €`);
 
-const calcDisplaySummary = movements => {
-	const incomes = movements
+const calcDisplaySummary = account => {
+	const incomes = account.movements
 		.filter(mov => mov > 0)
 		.reduce((acc, move) => acc + move, 0);
 	labelSumIn.textContent = `${incomes} €`;
 
-	const outcomes = movements
+	const outcomes = account.movements
 		.filter(mov => mov < 0)
 		.reduce((acc, move) => acc + move, 0);
 	labelSumOut.textContent = `${Math.abs(outcomes)} €`;
 
 	const calInterested = deposit => {
-		const interested = (deposit * 1.2) / 100;
+		const interested = (deposit * account.interestRate) / 100;
 		return interested > 1 ? interested : 0;
 	};
 
-	labelSumInterest.textContent = `${movements
+	labelSumInterest.textContent = `${account.movements
 		.reduce((result, mov) => {
 			if (mov > 0) {
 				result.push(calInterested(mov));
@@ -109,10 +109,6 @@ const calcDisplaySummary = movements => {
 		}, [])
 		.reduce((acc, int) => acc + int, 0)} €`;
 };
-
-displayMovements(account1.movements);
-calcDisplayBalance(account1.movements);
-calcDisplaySummary(account1.movements);
 
 const createUserName = accounts =>
 	accounts.forEach(
@@ -125,6 +121,37 @@ const createUserName = accounts =>
 	);
 
 createUserName(accounts);
+
+// event handler
+let currentAccount;
+btnLogin.addEventListener('click', function (e) {
+	// prevent from submitting
+	e.preventDefault();
+
+	currentAccount = accounts.find(
+		acc => acc.username === inputLoginUsername.value
+	);
+
+	if (currentAccount?.pin === Number(inputLoginPin.value)) {
+		// display ui and welcome message
+		labelWelcome.textContent = `Welcome back, ${
+			currentAccount.owner.split(' ')[0]
+		}`;
+		containerApp.style.opacity = '100';
+
+		// clear input
+		inputLoginUsername.value = inputLoginPin.value = '';
+
+		// display movement
+		displayMovements(currentAccount.movements);
+
+		// display balance
+		calcDisplayBalance(currentAccount.movements);
+
+		// display salary
+		calcDisplaySummary(currentAccount);
+	}
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
