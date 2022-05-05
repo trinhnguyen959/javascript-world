@@ -48,6 +48,18 @@ const account3 = {
 	movements: [200, -200, 340, -300, -20, 50, 400, -460],
 	interestRate: 0.7,
 	pin: 3333,
+	movementsDates: [
+		'2019-11-01T13:15:33.035Z',
+		'2019-11-30T09:48:16.867Z',
+		'2019-12-25T06:04:23.907Z',
+		'2020-01-25T14:18:46.235Z',
+		'2020-02-05T16:33:06.386Z',
+		'2020-04-10T14:43:26.374Z',
+		'2020-06-25T18:49:59.371Z',
+		'2020-07-26T12:01:20.894Z',
+	],
+	currency: 'USD',
+	locale: 'en-US',
 };
 
 const account4 = {
@@ -55,6 +67,18 @@ const account4 = {
 	movements: [430, 1000, 700, 50, 90],
 	interestRate: 1,
 	pin: 4444,
+	movementsDates: [
+		'2019-11-01T13:15:33.035Z',
+		'2019-11-30T09:48:16.867Z',
+		'2019-12-25T06:04:23.907Z',
+		'2020-01-25T14:18:46.235Z',
+		'2020-02-05T16:33:06.386Z',
+		'2020-04-10T14:43:26.374Z',
+		'2020-06-25T18:49:59.371Z',
+		'2020-07-26T12:01:20.894Z',
+	],
+	currency: 'USD',
+	locale: 'en-US',
 };
 const $ = document.querySelector.bind(document);
 const accounts = [account1, account2, account3, account4];
@@ -85,18 +109,23 @@ const inputLoanAmount = $('.form__input--loan-amount');
 const inputCloseUsername = $('.form__input--user');
 const inputClosePin = $('.form__input--pin');
 
-const displayMovements = function (movements, sort = false) {
+const displayMovements = function (acc, sort = false) {
 	containerMovements.innerHTML = '';
 
-	const moves = sort ? movements.slice().sort((a, b) => a - b) : movements;
+	const moves = sort
+		? acc.movements.slice().sort((a, b) => a - b)
+		: acc.movements;
+
 	moves.forEach((move, i) => {
 		const type = move > 0 ? 'deposit' : 'withdrawal';
+		const date = new Date(acc.movementsDates[i]);
+		const displayDate = formatDate(date);
 		const html = `
 			<div class="movements__row">
 			<div class="movements__type movements__type--${type}">
 				${i + 1} ${type}
 			</div>
-<!--				<div class="movements__date">3 days ago</div>-->
+			<div class="movements__date">${displayDate}</div>
 			<div class="movements__value">${move.toFixed(2)}€</div>
 		`;
 		// append to html
@@ -149,10 +178,28 @@ createUserName(accounts);
 
 // event handler
 let currentAccount;
+// fake always login
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = '100';
+
+const now = new Date();
+
+function formatDate(date) {
+	const day = `${date.getDate()}`.padStart(2, '0');
+	const month = `${date.getMonth()}`.padStart(2, '0');
+	const fullYear = date.getFullYear();
+	// const hours = date.getHours();
+	// const minutes = `${date.getMinutes()}`.padStart(2, '0');
+	// return `${day}/${month}/${fullYear}, ${hours}:${minutes}`;
+	return `${day}/${month}/${fullYear}`;
+}
+
+labelDate.textContent = formatDate(now);
 
 function updateUI(account) {
 	// display movement
-	displayMovements(account.movements);
+	displayMovements(account);
 
 	// display balance
 	calcDisplayBalance(account);
@@ -201,6 +248,10 @@ btnTransfer.addEventListener('click', function (e) {
 		currentAccount.movements.push(-amount);
 		receiverAccount.movements.push(amount);
 
+		// add transfer date
+		currentAccount.movementsDates.push(new Date().toISOString());
+		receiverAccount.movementsDates.push(new Date().toISOString());
+
 		// update ui
 		updateUI(currentAccount);
 	}
@@ -244,7 +295,7 @@ btnClose.addEventListener('click', function (e) {
 let sorted = false;
 btnSort.addEventListener('click', function (e) {
 	e.preventDefault();
-	displayMovements(currentAccount.movements, !sorted);
+	displayMovements(currentAccount, !sorted);
 	sorted = !sorted;
 });
 
