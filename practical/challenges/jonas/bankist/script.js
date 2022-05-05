@@ -109,6 +109,25 @@ const inputLoanAmount = $('.form__input--loan-amount');
 const inputCloseUsername = $('.form__input--user');
 const inputClosePin = $('.form__input--pin');
 
+const formatMovementDate = date => {
+	const calcDayPassed = (date1, date2) =>
+		Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
+
+	const dayPassed = calcDayPassed(new Date(), date);
+	console.log(dayPassed);
+
+	if (dayPassed === 0) return 'Today';
+	if (dayPassed === 1) return 'Yesterday';
+	if (dayPassed < 7) return `${dayPassed} days ago`;
+	else {
+		const day = `${date.getDate()}`.padStart(2, '0');
+		const month = `${date.getMonth()}`.padStart(2, '0');
+		const fullYear = date.getFullYear();
+
+		return `${day}/${month}/${fullYear}`;
+	}
+};
+
 const displayMovements = function (acc, sort = false) {
 	containerMovements.innerHTML = '';
 
@@ -119,7 +138,7 @@ const displayMovements = function (acc, sort = false) {
 	moves.forEach((move, i) => {
 		const type = move > 0 ? 'deposit' : 'withdrawal';
 		const date = new Date(acc.movementsDates[i]);
-		const displayDate = formatDate(date);
+		const displayDate = formatMovementDate(date);
 		const html = `
 			<div class="movements__row">
 			<div class="movements__type movements__type--${type}">
@@ -189,10 +208,9 @@ function formatDate(date) {
 	const day = `${date.getDate()}`.padStart(2, '0');
 	const month = `${date.getMonth()}`.padStart(2, '0');
 	const fullYear = date.getFullYear();
-	// const hours = date.getHours();
-	// const minutes = `${date.getMinutes()}`.padStart(2, '0');
-	// return `${day}/${month}/${fullYear}, ${hours}:${minutes}`;
-	return `${day}/${month}/${fullYear}`;
+	const hours = date.getHours();
+	const minutes = `${date.getMinutes()}`.padStart(2, '0');
+	return `${day}/${month}/${fullYear}, ${hours}:${minutes}`;
 }
 
 labelDate.textContent = formatDate(now);
