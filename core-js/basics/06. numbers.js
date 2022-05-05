@@ -53,3 +53,12 @@ const randomInt = (min, max) =>
 	Math.trunc(Math.random() * (max - min) + 1 + min);
 
 console.log(randomInt(10, 20));
+
+const number = 3884764.23;
+const options = {
+	style: 'currency',
+	unit: 'mile-per-hour',
+	currency: 'VND',
+	// useGrouping: false,
+};
+console.log('US:', new Intl.NumberFormat('vi-VN', options).format(number));
