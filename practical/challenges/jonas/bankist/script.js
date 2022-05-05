@@ -109,7 +109,7 @@ const inputLoanAmount = $('.form__input--loan-amount');
 const inputCloseUsername = $('.form__input--user');
 const inputClosePin = $('.form__input--pin');
 
-const formatMovementDate = date => {
+const formatMovementDate = (date, locale) => {
 	const calcDayPassed = (date1, date2) =>
 		Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
 
@@ -119,13 +119,14 @@ const formatMovementDate = date => {
 	if (dayPassed === 0) return 'Today';
 	if (dayPassed === 1) return 'Yesterday';
 	if (dayPassed < 7) return `${dayPassed} days ago`;
-	else {
+	/*	else {
 		const day = `${date.getDate()}`.padStart(2, '0');
 		const month = `${date.getMonth()}`.padStart(2, '0');
 		const fullYear = date.getFullYear();
 
 		return `${day}/${month}/${fullYear}`;
-	}
+	}*/
+	return new Intl.DateTimeFormat(locale).format(date);
 };
 
 const displayMovements = function (acc, sort = false) {
@@ -138,7 +139,7 @@ const displayMovements = function (acc, sort = false) {
 	moves.forEach((move, i) => {
 		const type = move > 0 ? 'deposit' : 'withdrawal';
 		const date = new Date(acc.movementsDates[i]);
-		const displayDate = formatMovementDate(date);
+		const displayDate = formatMovementDate(date, acc.locale);
 		const html = `
 			<div class="movements__row">
 			<div class="movements__type movements__type--${type}">
@@ -202,7 +203,7 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = '100';
 
-const now = new Date();
+// thu nghiem format date
 
 function formatDate(date) {
 	const day = `${date.getDate()}`.padStart(2, '0');
@@ -212,8 +213,6 @@ function formatDate(date) {
 	const minutes = `${date.getMinutes()}`.padStart(2, '0');
 	return `${day}/${month}/${fullYear}, ${hours}:${minutes}`;
 }
-
-labelDate.textContent = formatDate(now);
 
 function updateUI(account) {
 	// display movement
@@ -241,6 +240,21 @@ btnLogin.addEventListener('click', function (e) {
 		}`;
 		containerApp.style.opacity = '100';
 
+		const now = new Date();
+		const options = {
+			hour: 'numeric',
+			minute: 'numeric',
+			day: 'numeric',
+			month: 'numeric',
+			year: 'numeric',
+			// weekday: 'long',
+		};
+
+		const locale = navigator.language;
+		labelDate.textContent = new Intl.DateTimeFormat(
+			currentAccount.locale,
+			options
+		).format(now);
 		// clear input
 		inputLoginUsername.value = inputLoginPin.value = '';
 
