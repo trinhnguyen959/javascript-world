@@ -97,7 +97,7 @@ const displayMovements = function (movements, sort = false) {
 				${i + 1} ${type}
 			</div>
 <!--				<div class="movements__date">3 days ago</div>-->
-			<div class="movements__value">${move}€</div>
+			<div class="movements__value">${move.toFixed(2)}€</div>
 		`;
 		// append to html
 		containerMovements.insertAdjacentHTML('afterbegin', html);
@@ -106,14 +106,14 @@ const displayMovements = function (movements, sort = false) {
 
 const calcDisplayBalance = account => {
 	account.balance = account.movements.reduce((acc, mov) => acc + mov, 0);
-	return (labelBalance.textContent = `${account.balance} €`);
+	return (labelBalance.textContent = `${account.balance.toFixed(2)} €`);
 };
 
 const calcDisplaySummary = account => {
 	const incomes = account.movements
 		.filter(mov => mov > 0)
 		.reduce((acc, move) => acc + move, 0);
-	labelSumIn.textContent = `${incomes} €`;
+	labelSumIn.textContent = `${incomes.toFixed(2)} €`;
 
 	const outcomes = account.movements
 		.filter(mov => mov < 0)
@@ -209,7 +209,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
 	e.preventDefault();
 
-	const amount = Number(inputLoanAmount.value);
+	const amount = Math.floor(inputLoanAmount.value);
 	if (
 		amount > 0 &&
 		currentAccount.movements.some(mov => mov >= amount * 0.1)
