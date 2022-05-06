@@ -221,13 +221,11 @@ const createUserName = accounts =>
 createUserName(accounts);
 
 // event handler
-let currentAccount;
+let currentAccount, timer;
 // fake always login
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = '100';
-
-// thu nghiem format date
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = '100';
 
 function formatDate(date) {
 	const day = `${date.getDate()}`.padStart(2, '0');
@@ -248,6 +246,32 @@ function updateUI(account) {
 	// display salary
 	calcDisplaySummary(account);
 }
+
+const startLogoutTimer = function () {
+	const tiktok = function () {
+		const minute = `${Math.trunc(time / 60)}`.padStart(2, '0');
+		const second = `${Math.trunc(time % 60)}`.padStart(2, '0');
+		// in each call, print remaining time
+		labelTimer.textContent = `${minute}:${second}`;
+
+		// when 0 stop timer and logout
+		if (time === 0) {
+			clearInterval(timer);
+			labelWelcome.textContent = 'Login to get started';
+			containerApp.style.opacity = '0';
+		}
+
+		time--;
+	};
+
+	// set to 5 minutes
+	let time = 30;
+
+	// call timer event
+	tiktok();
+	timer = setInterval(tiktok, 1000);
+	return timer;
+};
 
 btnLogin.addEventListener('click', function (e) {
 	// prevent from submitting
@@ -281,7 +305,12 @@ btnLogin.addEventListener('click', function (e) {
 		).format(now);
 		// clear input
 		inputLoginUsername.value = inputLoginPin.value = '';
+		inputLoginPin.blur();
 
+		if (timer) {
+			clearInterval(timer);
+		}
+		timer = startLogoutTimer();
 		// update ui
 		updateUI(currentAccount);
 	}
@@ -310,6 +339,12 @@ btnTransfer.addEventListener('click', function (e) {
 
 		// update ui
 		updateUI(currentAccount);
+
+		// reset timer
+		if (timer) {
+			clearInterval(timer);
+		}
+		timer = startLogoutTimer();
 	}
 });
 
@@ -326,6 +361,12 @@ btnLoan.addEventListener('click', function (e) {
 
 		// update ui
 		updateUI(currentAccount);
+
+		// reset timer
+		if (timer) {
+			clearInterval(timer);
+		}
+		timer = startLogoutTimer();
 	}
 	inputLoanAmount.value = '';
 });
